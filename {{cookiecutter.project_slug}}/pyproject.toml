@@ -1,0 +1,111 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "{{cookiecutter.package_name}}"
+readme = "README.rst"
+dynamic = ["version", "description"]
+license = "{{cookiecutter.license}}"
+
+description = "adventures in python"
+requires-python = ">=3.6"
+keywords = []
+classifiers = [
+    "{{cookiecutter.development_status}}",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+{% if cookiecutter.license == "MIT" -%}
+    "License :: OSI Approved :: MIT License",
+{% elif cookiecutter.license == "Apache-2.0" -%}
+    "License :: OSI Approved :: Apache Software License",
+{% elif cookiecutter.license == "GPL-3.0" -}
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+{% else -%}
+    "License :: Other/Proprietary License",
+{% endif -%}
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python",
+    "Typing :: Typed",
+]
+dependencies = [
+    "click>=8.0",
+]
+
+[project.urls]
+Homepage = "{{cookiecutter.homepage_url}}"
+Repository = "{{cookiecutter.repository_url}}"
+"Issue Tracker" = "{{cookiecutter.issue_tracker_url}}"
+Documentation = "{{cookiecutter.documentation_url}}"
+ChangeLog = "{{cookiecutter.changelog_url}}"
+
+
+[project.readme]
+file = "README.rst"
+
+[project.license]
+file = "LICENSE"
+
+[[project.authors]]
+name = "{{cookiecutter.author_name}}"
+email = "{{cookiecutter.author_email}}"
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["{{cookiecutter.package_name}}"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 60
+
+[tool.mypy]
+verbosity = 0
+ignore_missing_imports = true
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module="{{cookiecutter.package_name}}"
+ignore_errors = false
+
+[tool.sphinx-pyproject]
+copyright = "{% now 'utc', '%Y' %}, {{cookiecutter.author_name}} <{{cookiecutter.author_email}}>"
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.doctest",
+    "sphinx_autodoc_typehints",
+    "sphinxcontrib.bibtex",
+]
+
+html_static_path = ["_static"]
+templates_path = ['_templates']
+exclude_patterns = []
+html_theme = 'alabaster'
+bibtex_bibfiles = ['refs.bib']
+bibtex_default_style = 'unsrt'
+
+[tool.black]
+line-length=120
+skip-string-normalization=true
+
+[tool.pytest.ini_options]
+addopts="--doctest-glob='*.rst' --cov"
+testpaths=["tests", "docs/source/examples"]
+
+[tool.flake8]
+max-line-length=120
+extend-ignore="D412,ANN101"
+application-import-names = "{{cookiecutter.package_name}},tests"
+per-file-ignores = ["tests/*:S101"]
+strictness="short"
+docstring_style="sphinx"
+rst-roles=["cite:p", "doc"]
+
+[tool.importlinter]
+root_package="{{cookiecutter.package_name}}"
