@@ -1,0 +1,6 @@
+coverage[toml]
+pytest
+pytest-cov
+pytest-sphinx
+xdoctest
+pygments

@@ -1,14 +1,15 @@
 {
     "project_slug": "hypercute_project",
-    "author_name": "",
-    "author_email": "",
-    "repository_url": "https://github.com/{{cookiecutter.author_name}}/{{cookiecutter.project_slug}}",
+    "user_name": "{{cookiecutter.project_slug}}",
+    "author_name": "Zorro",
+    "author_email": "zorro@email.org",
+    "repository_url": "https://github.com/{{cookiecutter.user_name}}/{{cookiecutter.project_slug}}",
     "homepage_url": "{{cookiecutter.repository_url}}",
     "issue_tracker_url": "{{cookiecutter.repository_url}}/issues",
     "documentation_url": "https://{{cookiecutter.project_slug}}.readthedocs.io",
-    "changelog_url": "{{cookiecutter.repository_url}}/blob/master/ChangeLog.rst"
+    "changelog_url": "{{cookiecutter.repository_url}}/blob/master/ChangeLog.rst",
     "package_name": "{{cookiecutter.project_slug.replace('-', '_')}}",
-    "license": ["MIT", "Apache-2.0", "GPL-3.0"],
+    "license": ["MIT", "Apache-2.0", "GPL-3.0", "other"],
     "development_status": [
       "Development Status :: 1 - Planning",
       "Development Status :: 2 - Pre-Alpha",

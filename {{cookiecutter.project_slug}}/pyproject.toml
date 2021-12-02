@@ -4,11 +4,8 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "{{cookiecutter.package_name}}"
-readme = "README.rst"
 dynamic = ["version", "description"]
-license = "{{cookiecutter.license}}"
 
-description = "adventures in python"
 requires-python = ">=3.6"
 keywords = []
 classifiers = [
@@ -19,7 +16,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 {% elif cookiecutter.license == "Apache-2.0" -%}
     "License :: OSI Approved :: Apache Software License",
-{% elif cookiecutter.license == "GPL-3.0" -}
+{% elif cookiecutter.license == "GPL-3.0" -%}
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 {% else -%}
     "License :: Other/Proprietary License",
@@ -40,12 +37,12 @@ Repository = "{{cookiecutter.repository_url}}"
 Documentation = "{{cookiecutter.documentation_url}}"
 ChangeLog = "{{cookiecutter.changelog_url}}"
 
-
 [project.readme]
 file = "README.rst"
+content-type = "text/x-rst"
 
 [project.license]
-file = "LICENSE"
+file = "LICENSE.rst"
 
 [[project.authors]]
 name = "{{cookiecutter.author_name}}"
@@ -61,6 +58,9 @@ source = ["{{cookiecutter.package_name}}"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 60
+
+[tool.isort]
+profile = "black"
 
 [tool.mypy]
 verbosity = 0

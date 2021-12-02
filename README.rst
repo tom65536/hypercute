@@ -10,7 +10,7 @@ This project template is to some extent based on the article and template
 I have adapted some details:
 
 * Instead of Poetry_ we use Flit_ for packaging.
-* We make the use of Codecov_ optional.
+* We make the use of Codecov_ optional (you might want to use this template in private/proprietary projects as well).
 
 .. _hypermodern:: https://github.com/cjolowicz/hypermodern-python
 .. _Poetry:: https://pypi.org/project/poetry/
@@ -25,3 +25,5 @@ Usage
 
    $ cookiecutter gh:tom65536/hypercute
 
+Next Steps
+==========
